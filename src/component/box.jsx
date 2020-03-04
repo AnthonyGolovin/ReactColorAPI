@@ -1,10 +1,15 @@
-import React from 'react';
+import React from "react";
 
 class Box extends React.Component{
     render(){
         return(
-            <div>
-                <button>Color changer</button>
+            <div className="wrapper">
+                <div style={{
+                    backgroundColor:`${this.props.color}`
+                }}
+                className="box">
+                    <button onClick={()=>{this.props.handleClick()}}>Color changer</button>
+                </div>
             </div>
         )
     }

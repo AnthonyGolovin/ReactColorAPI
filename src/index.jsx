@@ -1,10 +1,24 @@
+  
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import {createStore, applyMiddleware} from 'redux';
+import {Provider} from "react-redux";
+import thunk from "redux-thunk";
+import reducers from "./reducers/index.jsx";
+import Boxcon from './container/box-container.jsx';
+import './index.css';
+
+let store = createStore(reducers, applyMiddleware(thunk))
 
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
+class App extends React.Component{
+    render(){
+        return(
+           <Boxcon></Boxcon>
+        )
+    }
+}
+
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
